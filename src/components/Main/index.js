@@ -6,7 +6,7 @@ function Main() {
   return (
     <>
       <AppBar />
-      <p class="content-text">Hello, world!</p>
+      <p class="content-text">Hello, world!!</p>
     </>
   );
 }
