@@ -23,7 +23,7 @@ export default function LabTabs() {
             <TabList onChange={handleChange} centered>
               <Tab label="Create" value="1" />
               <Tab label="Get" value="2" />
-              <Tab label="LoginLine" value="3" />
+              <Tab label="Login Line" value="3" />
             </TabList>
           </Box>
           <TabPanel value="1">
