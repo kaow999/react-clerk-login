@@ -4,14 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import liff from '@line/liff';
-import logLiff from './utils/lineLiff'
+import init from './utils/initLiff'
+import logLiff from './utils/logLiff'
 
-
-liff.init({
-    liffId: '1657304428-KNG5Ym3b',
-});
-
+init();
 logLiff();
 
 ReactDOM.render(
