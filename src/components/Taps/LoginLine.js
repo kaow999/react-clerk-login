@@ -6,20 +6,17 @@ import liff from "@line/liff";
 
 function LoginLine() {
   const [data, setData] = useState("");
-  const [login, setLogin] = useState(false);
 
   const handleClickLogin = async () => {
     if (!liff.isLoggedIn()) {
       liff.login({ redirectUri: "https://login-clerk.web.app/" });
     }
-    setLogin(true);
   };
 
   const handleClickLogOut = async () => {
     if (liff.isLoggedIn()) {
-      liff.logout();
+      liff.logout({ redirectUri: "https://login-clerk.web.app/" });
     }
-    setLogin(false);
   };
 
   async function GetProfile() {
@@ -55,7 +52,7 @@ function LoginLine() {
         </Box>
 
         <Box sx={{ mx: "auto" }} centered>
-          {login ? (
+          {liff.isLoggedIn() ? (
             <Button
               variant="contained"
               size="small"
