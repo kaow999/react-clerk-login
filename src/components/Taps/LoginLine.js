@@ -15,7 +15,8 @@ function LoginLine() {
 
   const handleClickLogOut = async () => {
     if (liff.isLoggedIn()) {
-      liff.logout({ redirectUri: "https://login-clerk.web.app/" });
+      liff.logout();
+      setData("")
     }
   };
 
