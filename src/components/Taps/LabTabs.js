@@ -6,7 +6,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Create from "./Create";
 import Get from "./Get";
-import Delete from "./Delete";
+import LoginLine from "./LoginLine";
 
 export default function LabTabs() {
   const [value, setValue] = React.useState("1");
@@ -23,7 +23,7 @@ export default function LabTabs() {
             <TabList onChange={handleChange} centered>
               <Tab label="Create" value="1" />
               <Tab label="Get" value="2" />
-              <Tab label="Delete" value="3" />
+              <Tab label="LoginLine" value="3" />
             </TabList>
           </Box>
           <TabPanel value="1">
@@ -33,7 +33,7 @@ export default function LabTabs() {
             <Get />
           </TabPanel>
           <TabPanel value="3">
-            <Delete />
+            <LoginLine />
           </TabPanel>
         </TabContext>
       </Box>

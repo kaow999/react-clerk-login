@@ -4,20 +4,15 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import liff from "@line/liff";
 
-function Delete() {
-  const [name, setName] = useState("");
+function LoginLine() {
+  const [data, setData] = useState("");
 
-  if (!liff.isLoggedIn()) {
-    liff.login({ redirectUri: "https://login-clerk.web.app/" });
-  }
-  
   async function GetProfile() {
     liff.ready.then(() => {
       liff
         .getProfile()
         .then((profile) => {
-          setName(profile);
-          console.log(profile);
+          setData(profile);
         })
         .catch((err) => {
           console.log("error", err);
@@ -25,8 +20,11 @@ function Delete() {
     });
   }
   useEffect(() => {
-    GetProfile();
+    if (data == "") {
+      GetProfile();
+    }
   }, []);
+
   return (
     <>
       <Box
@@ -38,8 +36,11 @@ function Delete() {
           gridTemplateRows: "auto",
         }}
       >
-        <h1>Hello {name.displayName}</h1>
-        <img src={`${name.pictureUrl}`} height="240" alt="" />
+        <h1>Hello {data.displayName}</h1>
+        <Box sx={{ mx: "auto" }} centered>
+          <img src={`${data.pictureUrl}`} height="240" alt="" />
+        </Box>
+
         <Box sx={{ mx: "auto" }} centered>
           <Button
             variant="contained"
@@ -54,4 +55,4 @@ function Delete() {
   );
 }
 
-export default Delete;
+export default LoginLine;
