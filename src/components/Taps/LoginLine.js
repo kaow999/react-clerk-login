@@ -6,20 +6,19 @@ import liff from "@line/liff";
 
 function LoginLine() {
   const [data, setData] = useState("");
-
+  async function GetProfile() {
+    liff.ready.then(() => {
+      liff
+        .getProfile()
+        .then((profile) => {
+          setData(profile);
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    });
+  }
   useEffect(() => {
-    async function GetProfile() {
-      liff.ready.then(() => {
-        liff
-          .getProfile()
-          .then((profile) => {
-            setData(profile);
-          })
-          .catch((err) => {
-            console.log("error", err);
-          });
-      });
-    }
     GetProfile();
   }, []);
 
