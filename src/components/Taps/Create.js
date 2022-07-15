@@ -77,7 +77,7 @@ function Create() {
           Image
         </FormLabel>
         <label htmlFor="contained-button-file">
-          <img width="500" src={profileImg}/>
+          <img width="500" src={profileImg} alt=""/>
           <Input
             accept="image/*"
             id="contained-button-file"
