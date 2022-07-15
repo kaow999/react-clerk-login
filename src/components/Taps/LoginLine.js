@@ -6,11 +6,22 @@ import liff from "@line/liff";
 
 function LoginLine() {
   const [data, setData] = useState("");
+  const [login, setLogin] = useState(false);
 
-  if (!liff.isLoggedIn()) {
-    liff.login({ redirectUri: "https://login-clerk.web.app/" });
-  }
-  
+  const handleClickLogin = async () => {
+    if (!liff.isLoggedIn()) {
+      liff.login({ redirectUri: "https://login-clerk.web.app/" });
+    }
+    setLogin(true);
+  };
+
+  const handleClickLogOut = async () => {
+    if (liff.isLoggedIn()) {
+      liff.logout();
+    }
+    setLogin(false);
+  };
+
   async function GetProfile() {
     liff.ready.then(() => {
       liff
@@ -38,23 +49,25 @@ function LoginLine() {
           gridTemplateRows: "auto",
         }}
       >
-        <h1>Hello {data.displayName}</h1>
+        <h1>{data.displayName ? `Hello ${data.displayName}` : ""}</h1>
         <Box sx={{ mx: "auto" }} centered>
-          <img
-            src={`${data.pictureUrl}`}
-            height="240"
-            alt=""
-          />
+          <img src={`${data.pictureUrl}`} height="240" alt="" />
         </Box>
 
         <Box sx={{ mx: "auto" }} centered>
-          <Button
-            variant="contained"
-            size="small"
-            href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1657304428&redirect_uri=https://localhost:3000/&state=12345abcde&scope=profile%20openid&nonce=09876xyz"
-          >
-            Login
-          </Button>
+          {login ? (
+            <Button
+              variant="contained"
+              size="small"
+              onClick={handleClickLogOut}
+            >
+              LogOut
+            </Button>
+          ) : (
+            <Button variant="contained" size="small" onClick={handleClickLogin}>
+              LogIn
+            </Button>
+          )}
         </Box>
       </Box>
     </>
