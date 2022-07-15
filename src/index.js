@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import init from './utils/initLiff'
-import logLiff from './utils/logLiff'
+import init from "./utils/initLiff";
+import logLiff from "./utils/logLiff";
 
 init();
 logLiff();
